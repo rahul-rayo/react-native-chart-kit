@@ -24,7 +24,7 @@
     "react-native-scrollable-tab-view": "^1.0.0",
     "react-native-svg": "11.0.1",
     "react-test-renderer": "16.7.0",
-    "typescript": "^3.9.5"
+    "typescript": "^5.7.2"
   },
   "_main": "./node_modules/expo/AppEntry.js",
   "main": "./dist/index.js",
@@ -38,7 +38,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "test": "jest",
-    "build": "tsc",
+    "build": "tsc --skipLibCheck",
     "dev": "tsc --watch",
     "prepublish": "yarn build",
     "prepare": "yarn build"
