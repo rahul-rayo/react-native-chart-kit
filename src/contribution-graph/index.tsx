@@ -6,6 +6,11 @@ import ContributionGraph, {
   TooltipDataAttrs
 } from "./ContributionGraph";
 
+export interface ContributionDayInfo {
+  count: number;
+  date: Date;
+}
+
 export interface ContributionGraphProps extends AbstractChartProps {
   values: Array<any>;
   endDate: Date;
@@ -19,7 +24,7 @@ export interface ContributionGraphProps extends AbstractChartProps {
   showOutOfRangeDays?: boolean;
   accessor?: string;
   getMonthLabel?: (monthIndex: number) => string;
-  onDayPress?: ({ count: number, date: Date }) => void;
+  onDayPress?: (info: ContributionDayInfo) => void;
   classForValue?: (value: string) => string;
   style?: Partial<ViewStyle>;
   titleForValue?: (value: ContributionChartValue) => string;
