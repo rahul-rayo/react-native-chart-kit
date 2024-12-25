@@ -649,9 +649,10 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
   };
 
   getXMaxValues = (data: Dataset[]) => {
-    return data.reduce((acc, cur) => {
+    const xmax = data.reduce((acc, cur) => {
       return cur.data.length > acc ? cur.data.length : acc;
     }, 0);
+    return Math.max(1, xmax - 1);
   };
 
   getBezierLinePoints = (
@@ -981,13 +982,15 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
             contentContainerStyle={{ width: width * 2 }}
             showsHorizontalScrollIndicator={false}
             scrollEventThrottle={16}
-            onScroll={Animated.event([
-              {
-                nativeEvent: {
-                  contentOffset: { x: scrollableDotHorizontalOffset }
+            onScroll={Animated.event(
+              [
+                {
+                  nativeEvent: {
+                    contentOffset: { x: scrollableDotHorizontalOffset }
+                  }
                 }
-              }
-            ], { useNativeDriver: false }
+              ],
+              { useNativeDriver: false }
             )}
             horizontal
             bounces={false}
