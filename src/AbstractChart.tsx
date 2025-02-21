@@ -38,13 +38,15 @@ export type AbstractChartState = {};
 
 export const DEFAULT_X_LABELS_HEIGHT_PERCENTAGE = 0.75;
 
-class AbstractChart<
-  IProps extends AbstractChartProps,
-  IState extends AbstractChartState
-> extends Component<AbstractChartProps & IProps, AbstractChartState & IState> {
+export abstract class AbstractChart<
+  T extends AbstractChartProps = AbstractChartProps,
+  S = {}
+> extends React.Component<T, S> {
   calcScaler = (data: number[]) => {
     if (this.props.fromZero && this.props.fromNumber) {
-      return Math.max(...data, this.props.fromNumber) - Math.min(...data, 0) || 1;
+      return (
+        Math.max(...data, this.props.fromNumber) - Math.min(...data, 0) || 1
+      );
     } else if (this.props.fromZero) {
       return Math.max(...data, 0) - Math.min(...data, 0) || 1;
     } else if (this.props.fromNumber) {

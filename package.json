@@ -24,7 +24,7 @@
     "react-native-scrollable-tab-view": "^1.0.0",
     "react-native-svg": "11.0.1",
     "react-test-renderer": "16.7.0",
-    "typescript": "^3.9.5"
+    "typescript": "^5.7.3"
   },
   "_main": "./node_modules/expo/AppEntry.js",
   "main": "./dist/index.js",
